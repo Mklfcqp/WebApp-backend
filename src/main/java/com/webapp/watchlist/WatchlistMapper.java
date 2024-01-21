@@ -25,7 +25,7 @@ public class WatchlistMapper {
                 .build();
     }
 
-    public Watchlist toWatchlistAddRequest(WatchlistAddRequest watchlistAddRequest, User user) {
+    public Watchlist toWatchlist(WatchlistAddRequest watchlistAddRequest, User user) {
 
         return Watchlist.builder()
                 .id(watchlistAddRequest.getId())

@@ -23,7 +23,7 @@ public class WatchlistService {
             throw new IllegalStateException("User not authenticated");
         }
 
-        Watchlist watchlist = watchlistMapper.toWatchlistAddRequest(request, currentUser);
+        Watchlist watchlist = watchlistMapper.toWatchlist(request, currentUser);
         watchlistRepository.save(watchlist);
 
     }
@@ -69,9 +69,8 @@ public class WatchlistService {
                 throw new IllegalStateException("User not authenticated");
             }
 
-            Watchlist watchlist = watchlistMapper.toWatchlistAddRequest(request, currentUser);
+            Watchlist watchlist = watchlistMapper.toWatchlist(request, currentUser);
             watchlistRepository.save(watchlist);
-
     }
 
 
