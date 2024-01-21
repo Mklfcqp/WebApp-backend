@@ -36,20 +36,43 @@ public class WatchlistService {
                 .toList();
     }
 
-    //---------------updateWatchlistData()---------------
+    //---------------loadWatchlistDataById()---------------
 
-    public void updateWatchlist(WatchlistAddRequest request, Long id) {
+    public WatchlistGetRequest getWatchlistById(Long id) {
         Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
 
         if (optionalWatchlist.isPresent()) {
-            Watchlist existingWatchlist = optionalWatchlist.get();
-            watchlistMapper.updateWatchlistFromRequest(existingWatchlist, request);
-            watchlistRepository.save(existingWatchlist);
+            Watchlist watchlist = optionalWatchlist.get();
+            return watchlistMapper.toWatchlistGetRequest(watchlist);
         } else {
-            throw new IllegalStateException("Watchlist item not found with ID: " + id);
+            throw new IllegalStateException("Watchlist not found with ID: " + id);
         }
     }
 
+    //---------------updateWatchlistData()---------------
+
+//    public void updateWatchlist(WatchlistAddRequest request, Long id) {
+//        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
+//
+//        if (optionalWatchlist.isPresent()) {
+//            Watchlist existingWatchlist = optionalWatchlist.get();
+//            watchlistMapper.updateWatchlistFromRequest(existingWatchlist, request);
+//            watchlistRepository.save(existingWatchlist);
+//        } else {
+//            throw new IllegalStateException("Watchlist item not found with ID: " + id);
+//        }
+//    }
+
+        public void updateWatchlist(WatchlistAddRequest request) {
+            User currentUser = getCurrentUser();
+            if (currentUser == null) {
+                throw new IllegalStateException("User not authenticated");
+            }
+
+            Watchlist watchlist = watchlistMapper.toWatchlistAddRequest(request, currentUser);
+            watchlistRepository.save(watchlist);
+
+    }
 
 
     //---------------deleteWatchlistData()---------------

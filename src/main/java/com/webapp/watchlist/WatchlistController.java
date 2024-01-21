@@ -32,13 +32,20 @@ public class WatchlistController {
         return watchlistService.getWatchlists();
     }
 
+    //---------------loadWatchlistDataById()---------------
+
+    @GetMapping("/load/{id}")
+    public WatchlistGetRequest getWatchlistById(@PathVariable("id") Long id){
+        return watchlistService.getWatchlistById(id);
+    }
+
     //---------------updateWatchlistData()---------------
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateWatchlist(@RequestBody WatchlistAddRequest request, @PathVariable("id") Long id){
+    @PutMapping("/update")
+    public ResponseEntity<String> updateWatchlist(@RequestBody WatchlistAddRequest request){
         try {
 
-            watchlistService.updateWatchlist(request, id);
+            watchlistService.updateWatchlist(request);
             return ResponseEntity.ok("Watchlist item updated successfully");
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
