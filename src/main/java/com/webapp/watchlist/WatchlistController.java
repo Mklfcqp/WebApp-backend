@@ -1,9 +1,5 @@
 package com.webapp.watchlist;
 
-import com.webapp.auth.AuthenticationResponse;
-import com.webapp.auth.AuthenticationService;
-import com.webapp.patient.Patient;
-import com.webapp.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,16 +34,16 @@ public class WatchlistController {
 
     //---------------updateWatchlistData()---------------
 
-//    @PutMapping("/update/{watchlistId}")
-//    public ResponseEntity<String> updateWatchlistData(@PathVariable Long watchlistId, @RequestBody WatchlistAddRequest request) throws Exception {
-//        try {
-//            watchlistService.updateWatchlistData(watchlistId, request);
-//            return ResponseEntity.ok("Watchlist item updated successfully");
-//        } catch (IllegalStateException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateWatchlist(@RequestBody WatchlistAddRequest request, @PathVariable("id") Long id){
+        try {
 
+            watchlistService.updateWatchlist(request, id);
+            return ResponseEntity.ok("Watchlist item updated successfully");
+        } catch (IllegalStateException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
     //---------------deleteWatchlistData()---------------
 

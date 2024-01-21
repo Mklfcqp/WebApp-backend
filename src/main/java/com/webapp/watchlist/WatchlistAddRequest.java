@@ -1,6 +1,5 @@
 package com.webapp.watchlist;
 
-import com.webapp.user.User;
 import lombok.*;
 
 import java.math.BigDecimal;

@@ -44,4 +44,19 @@ public class WatchlistMapper {
                 .overValuedUnderValued(watchlistAddRequest.getOverValuedUnderValued())
                 .build();
     }
+
+    public void updateWatchlistFromRequest(Watchlist existingWatchlist, WatchlistAddRequest request) {
+
+        existingWatchlist.setTicker(request.getTicker());
+        existingWatchlist.setCompany(request.getCompany());
+        existingWatchlist.setPrice(request.getPrice());
+        existingWatchlist.setCurrencyPrice(request.getCurrencyPrice());
+        existingWatchlist.setDcf(request.getDcf());
+        existingWatchlist.setCurrencyDcf(request.getCurrencyDcf());
+        existingWatchlist.setDividendYield(request.getDividendYield());
+        existingWatchlist.setDividendQ(request.getDividendQ());
+        existingWatchlist.setCurrencyDividendQ(request.getCurrencyDividendQ());
+        existingWatchlist.setDividendY(request.getDividendY());
+        existingWatchlist.setCurrencyDividendY(request.getCurrencyDividendY());
+    }
 }

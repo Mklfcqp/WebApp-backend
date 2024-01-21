@@ -1,20 +1,13 @@
 package com.webapp.watchlist;
 
-import com.webapp.auth.AuthenticationResponse;
-import com.webapp.config.JwtService;
-import com.webapp.patient.Patient;
 import com.webapp.user.User;
-import com.webapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -45,36 +38,18 @@ public class WatchlistService {
 
     //---------------updateWatchlistData()---------------
 
-//    public void updateWatchlistData(Long watchlistId, WatchlistAddRequest request) {
-//        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(watchlistId);
-//
-//        User currentUser = getCurrentUser();
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User not authenticated");
-//        }
-//
-//        if (optionalWatchlist.isPresent()) {
-//            Watchlist watchlist = Watchlist.builder()
-//                    .user(currentUser)
-//                    .ticker(request.getTicker())
-//                    .company(request.getCompany())
-//                    .price(request.getPrice())
-//                    .currencyPrice(request.getCurrencyPrice())
-//                    .dcf(request.getDcf())
-//                    .currencyDcf(request.getCurrencyDcf())
-//                    .dividendY(request.getDividendY())
-//                    .currencyDividendY(request.getCurrencyDividendY())
-//                    .dividendQ(request.getDividendQ())
-//                    .currencyDividendQ(request.getCurrencyDividendQ())
-//                    .dividendYield(request.getDividendYield())
-//                    .overValuedUnderValued(request.getOverValuedUnderValued())
-//                    .build();
-//
-//            watchlistRepository.save(watchlist);
-//        } else {
-//            throw new RuntimeException("Watchlist not found.");
-//        }
-//    }
+    public void updateWatchlist(WatchlistAddRequest request, Long id) {
+        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
+
+        if (optionalWatchlist.isPresent()) {
+            Watchlist existingWatchlist = optionalWatchlist.get();
+            watchlistMapper.updateWatchlistFromRequest(existingWatchlist, request);
+            watchlistRepository.save(existingWatchlist);
+        } else {
+            throw new IllegalStateException("Watchlist item not found with ID: " + id);
+        }
+    }
+
 
 
     //---------------deleteWatchlistData()---------------
@@ -88,6 +63,8 @@ public class WatchlistService {
 
 
 
+
+    //---------------getCurrentUser()---------------
 
         private User getCurrentUser() {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
