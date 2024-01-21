@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://viaduct.proxy.rlwy.net:20122/railway
     username: postgres
-    password: B4qYdKGr&7d69q7X
+    password: febB*d*4-cF4c2EGFg1deCEC63gG2f1e
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: false
     properties:
       hibernate:
@@ -21,4 +21,3 @@ application:
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
-
