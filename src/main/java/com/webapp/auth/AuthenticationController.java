@@ -11,7 +11,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("https://web-app-frontend-alpha.vercel.app/")
 public class AuthenticationController {
 
     private final AuthenticationService service;

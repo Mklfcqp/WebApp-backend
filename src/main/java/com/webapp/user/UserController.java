@@ -9,7 +9,7 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("https://web-app-frontend-alpha.vercel.app/")
 public class UserController {
 
     private final UserService userService;

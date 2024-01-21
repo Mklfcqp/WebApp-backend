@@ -3,10 +3,13 @@ spring:
     url: jdbc:postgresql://viaduct.proxy.rlwy.net:20122/railway
     username: postgres
     password: febB*d*4-cF4c2EGFg1deCEC63gG2f1e
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    username: postgres
+#    password: B4qYdKGr&7d69q7X
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     show-sql: false
     properties:
       hibernate:
