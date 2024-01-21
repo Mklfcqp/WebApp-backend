@@ -38,16 +38,16 @@ public class WatchlistService {
 
     //---------------loadWatchlistDataById()---------------
 
-    public WatchlistGetRequest getWatchlistById(Long id) {
-        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
-
-        if (optionalWatchlist.isPresent()) {
-            Watchlist watchlist = optionalWatchlist.get();
-            return watchlistMapper.toWatchlistGetRequest(watchlist);
-        } else {
-            throw new IllegalStateException("Watchlist not found with ID: " + id);
-        }
-    }
+//    public WatchlistGetRequest getWatchlistById(Long id) {
+//        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
+//
+//        if (optionalWatchlist.isPresent()) {
+//            Watchlist watchlist = optionalWatchlist.get();
+//            return watchlistMapper.toWatchlistGetRequest(watchlist);
+//        } else {
+//            throw new IllegalStateException("Watchlist not found with ID: " + id);
+//        }
+//    }
 
     //---------------updateWatchlistData()---------------
 

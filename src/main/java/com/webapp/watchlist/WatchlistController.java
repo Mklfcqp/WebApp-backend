@@ -9,7 +9,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/watchlist")
 @RequiredArgsConstructor
-@CrossOrigin("https://web-app-frontend-6evsq3ewm-mkqps-projects.vercel.app/")
+@CrossOrigin("http://localhost:5173/")
+//@CrossOrigin("https://web-app-frontend-6evsq3ewm-mkqps-projects.vercel.app/")
 public class WatchlistController {
 
     private final WatchlistService watchlistService;
@@ -34,10 +35,10 @@ public class WatchlistController {
 
     //---------------loadWatchlistDataById()---------------
 
-    @GetMapping("/load/{id}")
-    public WatchlistGetRequest getWatchlistById(@PathVariable("id") Long id){
-        return watchlistService.getWatchlistById(id);
-    }
+//    @GetMapping("/load/{id}")
+//    public WatchlistGetRequest getWatchlistById(@PathVariable("id") Long id){
+//        return watchlistService.getWatchlistById(id);
+//    }
 
     //---------------updateWatchlistData()---------------
 
