@@ -1,12 +1,12 @@
 package com.webapp.watchlist;
 
 import com.webapp.user.User;
+import com.webapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -15,6 +15,7 @@ public class WatchlistService {
 
     private final WatchlistRepository watchlistRepository;
     private final WatchlistMapper watchlistMapper;
+    private final UserRepository userRepository;
 
     public void addCompanyToWatchlist(WatchlistAddRequest request) {
 
@@ -29,12 +30,25 @@ public class WatchlistService {
     }
 
     //---------------loadWatchlistData()---------------
+//    public List<WatchlistGetRequest> getWatchlists() {
+//        User currentUser = getCurrentUser();
+//        if (currentUser == null) {
+//            throw new IllegalStateException("User not authenticated");
+//        }
+//
+//        Long userId = currentUser.getId();
+//        return watchlistRepository.findByUserId(userId).stream()
+//                .map(watchlistMapper::toWatchlistGetRequest)
+//                .toList();
+//    }
 
     public List<WatchlistGetRequest> getWatchlists() {
         return watchlistRepository.findAll().stream()
                 .map(watchlistMapper::toWatchlistGetRequest)
                 .toList();
     }
+
+
 
     //---------------loadWatchlistDataById()---------------
 
@@ -50,19 +64,6 @@ public class WatchlistService {
 //    }
 
     //---------------updateWatchlistData()---------------
-
-//    public void updateWatchlist(WatchlistAddRequest request, Long id) {
-//        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
-//
-//        if (optionalWatchlist.isPresent()) {
-//            Watchlist existingWatchlist = optionalWatchlist.get();
-//            watchlistMapper.updateWatchlistFromRequest(existingWatchlist, request);
-//            watchlistRepository.save(existingWatchlist);
-//        } else {
-//            throw new IllegalStateException("Watchlist item not found with ID: " + id);
-//        }
-//    }
-
         public void updateWatchlist(WatchlistAddRequest request) {
             User currentUser = getCurrentUser();
             if (currentUser == null) {
@@ -75,16 +76,9 @@ public class WatchlistService {
 
 
     //---------------deleteWatchlistData()---------------
-
     public void deleteWatchlist(Long id) {
         watchlistRepository.deleteById(id);
     }
-
-
-
-
-
-
 
     //---------------getCurrentUser()---------------
 
