@@ -30,20 +30,20 @@ public class PortfolioAddRequest {
 
 
 
-    public BigDecimal profitLossBuySellCalc(){
+    public BigDecimal getProfitLossBuySell(){
         profitLossBuySell = ((buy.subtract(sell)).add(interestBuySell)).setScale(2, RoundingMode.HALF_UP);
         return profitLossBuySell;
     }
 
 
-    public BigDecimal profitLossDividendCalc(){
+    public BigDecimal getProfitLossDividend(){
         profitLossDividend = (dividend.subtract(interestDividend)).setScale(2, RoundingMode.HALF_UP);
         return profitLossDividend;
     }
 
 
-    public BigDecimal sumProfitLossCalc(){
-        sumProfitLoss = (profitLossBuySellCalc().add(profitLossDividendCalc())).setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal getSumProfitLoss(){
+        sumProfitLoss = (getProfitLossBuySell().add(getProfitLossDividend())).setScale(2, RoundingMode.HALF_UP);
         return sumProfitLoss;
     }
 }
