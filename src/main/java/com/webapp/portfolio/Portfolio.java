@@ -23,7 +23,7 @@ public class Portfolio {
     private String ticker;
     private String company;
 
-    private int shares;
+    private Long shares;
     private BigDecimal buy;
     private BigDecimal sell;
     private BigDecimal interestBuySell;
