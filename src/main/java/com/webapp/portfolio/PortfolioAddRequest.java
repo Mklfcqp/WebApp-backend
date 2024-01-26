@@ -30,8 +30,12 @@ public class PortfolioAddRequest {
 
 
 
-    public BigDecimal getProfitLossBuySell(){
-        profitLossBuySell = ((buy.subtract(sell)).add(interestBuySell)).setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal getProfitLossBuySell() {
+        BigDecimal value1 = buy.add(interestBuySell);
+        BigDecimal value2 = sell.subtract(value1);
+
+        profitLossBuySell = sell.compareTo(BigDecimal.ZERO) == 0 ? BigDecimal.ZERO : value2;
+
         return profitLossBuySell;
     }
 

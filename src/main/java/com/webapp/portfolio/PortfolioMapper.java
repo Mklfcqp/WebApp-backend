@@ -27,6 +27,7 @@ public class PortfolioMapper {
     public Portfolio toPortfolio(PortfolioAddRequest portfolioAddRequest, User user) {
 
         return Portfolio.builder()
+                .user(user)
                 .id(portfolioAddRequest.getId())
                 .ticker(portfolioAddRequest.getTicker())
                 .company(portfolioAddRequest.getCompany())
@@ -55,5 +56,22 @@ public class PortfolioMapper {
         existingPortfolio.setSumProfitLoss(request.getSumProfitLoss());
 
 
+    }
+
+
+
+    public PortfolioGetRequestSUM toPortfolioGetRequestSUM(Portfolio portfolio) {
+
+        return PortfolioGetRequestSUM.builder()
+                .id(portfolio.getId())
+                .buy(portfolio.getBuy())
+                .sell(portfolio.getSell())
+                .interestBuySell(portfolio.getInterestBuySell())
+                .profitLossBuySell(portfolio.getProfitLossBuySell())
+                .dividend(portfolio.getDividend())
+                .interestDividend(portfolio.getInterestDividend())
+                .profitLossDividend(portfolio.getProfitLossDividend())
+                .sumProfitLoss(portfolio.getSumProfitLoss())
+                .build();
     }
 }

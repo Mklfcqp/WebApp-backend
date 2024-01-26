@@ -53,4 +53,12 @@ public class PortfolioController {
     public void deleteWatchlist(@PathVariable("id") Long id){
         portfolioService.deletePortfolio(id);
     }
+
+
+
+//    @GetMapping("/load/sum")
+//    public PortfolioGetRequestSUM getPortfolioSUM(){
+//        return portfolioService.getPortfolioSUM();
+//    }
+
 }

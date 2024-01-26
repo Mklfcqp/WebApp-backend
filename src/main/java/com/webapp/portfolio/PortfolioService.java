@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -97,4 +98,51 @@ public class PortfolioService {
 
         return null;
     }
+
+
+//    public PortfolioGetRequestSUM getPortfolioSUM() {
+//
+//        List<Portfolio> sum = portfolioRepository.findByUser();
+//
+//        BigDecimal buySum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//        BigDecimal sellSum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//        BigDecimal interestBuySellSum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//        BigDecimal profitLossBuySellSum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//        BigDecimal dividendSum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//        BigDecimal interestDividendSum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//        BigDecimal profitLossDividendSum = sum.stream()
+//                .map(portfolioMapper::toPortfolioGetRequestSUM)
+//                .sum();
+//
+//
+//        return new PortfolioGetRequestSUM(
+//                buySum,
+//                sellSum,
+//                interestBuySellSum,
+//                profitLossBuySellSum,
+//                dividendSum,
+//                interestDividendSum,
+//                profitLossDividendSum
+//        );
+//    }
+
+
 }
