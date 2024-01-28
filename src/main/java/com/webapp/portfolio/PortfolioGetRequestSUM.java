@@ -23,8 +23,4 @@ public class PortfolioGetRequestSUM {
     private BigDecimal profitLossDividend;
     private BigDecimal sumProfitLoss;
 
-
-
-
-
 }

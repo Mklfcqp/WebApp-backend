@@ -3,6 +3,9 @@ package com.webapp.portfolio;
 import com.webapp.user.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PortfolioMapper {
 
@@ -73,5 +76,12 @@ public class PortfolioMapper {
                 .profitLossDividend(portfolio.getProfitLossDividend())
                 .sumProfitLoss(portfolio.getSumProfitLoss())
                 .build();
+    }
+
+
+    public List<PortfolioGetRequest> toPortfolioGetRequest(List<Portfolio> portfolios) {
+        return portfolios.stream()
+                .map(this::toPortfolioGetRequest)
+                .collect(Collectors.toList());
     }
 }

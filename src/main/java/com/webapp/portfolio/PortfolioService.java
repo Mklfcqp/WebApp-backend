@@ -16,7 +16,6 @@ public class PortfolioService {
 
     private final PortfolioRepository portfolioRepository;
     private final PortfolioMapper portfolioMapper;
-    private final UserRepository userRepository;
 
     public void addCompanyToPortfolio(PortfolioAddRequest request) {
 
@@ -31,15 +30,30 @@ public class PortfolioService {
     }
 
     //---------------loadWatchlistData()---------------
-//    public List<WatchlistGetRequest> getWatchlists() {
+//    public List<PortfolioGetRequest> getPortfolio() {
 //        User currentUser = getCurrentUser();
 //        if (currentUser == null) {
 //            throw new IllegalStateException("User not authenticated");
 //        }
 //
 //        Long userId = currentUser.getId();
-//        return watchlistRepository.findByUserId(userId).stream()
-//                .map(watchlistMapper::toWatchlistGetRequest)
+//        System.out.println(userId);
+//
+//        List<Portfolio> portfolios = portfolioRepository.findByUserId(userId);
+//        List<PortfolioGetRequest> requests = portfolioMapper.toPortfolioGetRequest(portfolios);
+//
+//        return requests;
+//    }
+
+//        public List<PortfolioGetRequest> getPortfolio() {
+//        User currentUser = getCurrentUser();
+//        if (currentUser == null) {
+//            throw new IllegalStateException("User not authenticated");
+//        }
+//
+//        Long userId = currentUser.getId();
+//        return portfolioRepository.findByUserId(userId).stream()
+//                .map(portfolioMapper::toPortfolioGetRequest)
 //                .toList();
 //    }
 
@@ -50,19 +64,6 @@ public class PortfolioService {
     }
 
 
-
-    //---------------loadWatchlistDataById()---------------
-
-//    public WatchlistGetRequest getWatchlistById(Long id) {
-//        Optional<Watchlist> optionalWatchlist = watchlistRepository.findById(id);
-//
-//        if (optionalWatchlist.isPresent()) {
-//            Watchlist watchlist = optionalWatchlist.get();
-//            return watchlistMapper.toWatchlistGetRequest(watchlist);
-//        } else {
-//            throw new IllegalStateException("Watchlist not found with ID: " + id);
-//        }
-//    }
 
     //---------------updateWatchlistData()---------------
     public void updatePortfolio(PortfolioAddRequest request) {
@@ -100,48 +101,48 @@ public class PortfolioService {
     }
 
 
+    //---------------getSum()---------------
+
 //    public PortfolioGetRequestSUM getPortfolioSUM() {
+//        List<Portfolio> portfolios = portfolioRepository.findByUserId(getCurrentUser().getId());
 //
-//        List<Portfolio> sum = portfolioRepository.findByUser();
+//        BigDecimal buySum = portfolios.stream()
+//                .map(Portfolio::getBuy)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal buySum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
+//        BigDecimal sellSum = portfolios.stream()
+//                .map(Portfolio::getSell)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal sellSum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
+//        BigDecimal interestBuySellSum = portfolios.stream()
+//                .map(Portfolio::getInterestBuySell)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal interestBuySellSum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
+//        BigDecimal profitLossBuySellSum = portfolios.stream()
+//                .map(Portfolio::getProfitLossBuySell)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal profitLossBuySellSum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
+//        BigDecimal dividendSum = portfolios.stream()
+//                .map(Portfolio::getDividend)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal dividendSum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
+//        BigDecimal interestDividendSum = portfolios.stream()
+//                .map(Portfolio::getInterestDividend)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal interestDividendSum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
+//        BigDecimal profitLossDividendSum = portfolios.stream()
+//                .map(Portfolio::getProfitLossDividend)
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        BigDecimal profitLossDividendSum = sum.stream()
-//                .map(portfolioMapper::toPortfolioGetRequestSUM)
-//                .sum();
-//
-//
-//        return new PortfolioGetRequestSUM(
-//                buySum,
-//                sellSum,
-//                interestBuySellSum,
-//                profitLossBuySellSum,
-//                dividendSum,
-//                interestDividendSum,
-//                profitLossDividendSum
-//        );
+//        return PortfolioGetRequestSUM.builder()
+//                .buy(buySum)
+//                .sell(sellSum)
+//                .interestBuySell(interestBuySellSum)
+//                .profitLossBuySell(profitLossBuySellSum)
+//                .dividend(dividendSum)
+//                .interestDividend(interestDividendSum)
+//                .profitLossDividend(profitLossDividendSum)
+//                .build();
 //    }
 
 

@@ -38,8 +38,8 @@ public class User implements UserDetails {
   @OneToMany(mappedBy = "user")
   private List<Watchlist> watchlists;
 
-  @OneToOne(mappedBy = "user")
-  private Portfolio portfolio;
+  @OneToMany(mappedBy = "user")
+  private List<Portfolio> portfolios;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
