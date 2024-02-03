@@ -30,39 +30,20 @@ public class PortfolioService {
     }
 
     //---------------loadWatchlistData()---------------
-//    public List<PortfolioGetRequest> getPortfolio() {
-//        User currentUser = getCurrentUser();
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User not authenticated");
-//        }
-//
-//        Long userId = currentUser.getId();
-//        System.out.println(userId);
-//
-//        List<Portfolio> portfolios = portfolioRepository.findByUserId(userId);
-//        List<PortfolioGetRequest> requests = portfolioMapper.toPortfolioGetRequest(portfolios);
-//
-//        return requests;
-//    }
-
-//        public List<PortfolioGetRequest> getPortfolio() {
-//        User currentUser = getCurrentUser();
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User not authenticated");
-//        }
-//
-//        Long userId = currentUser.getId();
-//        return portfolioRepository.findByUserId(userId).stream()
-//                .map(portfolioMapper::toPortfolioGetRequest)
-//                .toList();
-//    }
-
     public List<PortfolioGetRequest> getPortfolio() {
-        return portfolioRepository.findAll().stream()
-                .map(portfolioMapper::toPortfolioGetRequest)
-                .toList();
-    }
+        User currentUser = getCurrentUser();
+        if (currentUser == null) {
+            throw new IllegalStateException("User not authenticated");
+        }
 
+        Long userId = currentUser.getId();
+        System.out.println(userId);
+
+        List<Portfolio> portfolios = portfolioRepository.findByUserId(userId);
+        List<PortfolioGetRequest> requests = portfolioMapper.toPortfolioGetRequest(portfolios);
+
+        return requests;
+    }
 
 
     //---------------updateWatchlistData()---------------

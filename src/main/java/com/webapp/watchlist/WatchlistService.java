@@ -30,20 +30,14 @@ public class WatchlistService {
     }
 
     //---------------loadWatchlistData()---------------
-//    public List<WatchlistGetRequest> getWatchlists() {
-//        User currentUser = getCurrentUser();
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User not authenticated");
-//        }
-//
-//        Long userId = currentUser.getId();
-//        return watchlistRepository.findByUserId(userId).stream()
-//                .map(watchlistMapper::toWatchlistGetRequest)
-//                .toList();
-//    }
-
     public List<WatchlistGetRequest> getWatchlists() {
-        return watchlistRepository.findAll().stream()
+        User currentUser = getCurrentUser();
+        if (currentUser == null) {
+            throw new IllegalStateException("User not authenticated");
+        }
+
+        Long userId = currentUser.getId();
+        return watchlistRepository.findByUserId(userId).stream()
                 .map(watchlistMapper::toWatchlistGetRequest)
                 .toList();
     }
