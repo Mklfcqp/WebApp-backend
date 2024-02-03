@@ -55,10 +55,10 @@ public class PortfolioController {
     }
 
 
-
-//    @GetMapping("/load/sum")
-//    public PortfolioGetRequestSUM getPortfolioSUM(){
-//        return portfolioService.getPortfolioSUM();
-//    }
+    //---------------getSUMPortfolioData()---------------
+    @GetMapping("/load/sum")
+    public PortfolioGetRequestSUM getPortfolioSUM(){
+        return portfolioService.getPortfolioSUM();
+    }
 
 }
