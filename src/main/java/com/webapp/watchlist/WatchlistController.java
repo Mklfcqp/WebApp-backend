@@ -62,4 +62,11 @@ public class WatchlistController {
 
 
 
+
+    @GetMapping("/sorted/disparity")
+    public List<WatchlistGetRequest> sortedDisparity() {
+        return watchlistService.sortedDisparity();
+    }
+
+
 }
