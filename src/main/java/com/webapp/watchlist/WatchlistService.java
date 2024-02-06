@@ -3,6 +3,8 @@ package com.webapp.watchlist;
 import com.webapp.user.User;
 import com.webapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -121,6 +123,24 @@ public class WatchlistService {
                 })
                 .toList();
     }
+
+
+
+
+//    public Page<WatchlistGetRequest> getItems(Pageable pageable) {
+//        User currentUser = getCurrentUser();
+//        if (currentUser == null) {
+//            throw new IllegalStateException("User not authenticated");
+//        }
+//
+//        Long userId = currentUser.getId();
+//        Page<Watchlist> watchlistPage = watchlistRepository.findByUserIdPageable(userId, pageable);
+//        return watchlistPage.map(watchlistMapper::toWatchlistGetRequest);
+//    }
+
+
+
+
 
 
 }
