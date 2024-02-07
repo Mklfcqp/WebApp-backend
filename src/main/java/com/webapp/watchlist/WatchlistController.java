@@ -76,14 +76,6 @@ public class WatchlistController {
 
 
 
-//    @GetMapping("/items")
-//    public ResponseEntity<Page<WatchlistGetRequest>> getItems(@RequestParam(defaultValue = "0") int page,
-//                                                              @RequestParam(defaultValue = "10") int size) {
-//
-//        Pageable pageable = PageRequest.of(page, size);
-//        Page<WatchlistGetRequest> items = watchlistService.getItems(pageable);
-//        return ResponseEntity.ok(items);
-//    }
 
 
 //    @GetMapping

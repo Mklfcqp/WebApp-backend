@@ -129,16 +129,7 @@ public class WatchlistService {
 
 
 
-//    public Page<WatchlistGetRequest> getItems(Pageable pageable) {
-//        User currentUser = getCurrentUser();
-//        if (currentUser == null) {
-//            throw new IllegalStateException("User not authenticated");
-//        }
-//
-//        Long userId = currentUser.getId();
-//        Page<Watchlist> watchlistPage = watchlistRepository.findByUserIdPageable(userId, pageable);
-//        return watchlistPage.map(watchlistMapper::toWatchlistGetRequest);
-//    }
+
 
 
 
