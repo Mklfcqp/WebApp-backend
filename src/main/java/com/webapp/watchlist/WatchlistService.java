@@ -4,10 +4,12 @@ import com.webapp.user.User;
 import com.webapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Comparator;
 import java.util.List;
@@ -138,6 +140,12 @@ public class WatchlistService {
 //        return watchlistPage.map(watchlistMapper::toWatchlistGetRequest);
 //    }
 
+
+
+//    public Page<WatchlistGetRequest> getWatchlistsByUserId(Long userId, Pageable pageable) {
+//        return watchlistRepository.findByUserId(userId, pageable)
+//                .map(watchlistMapper::toWatchlistGetRequest);
+//    }
 
 
 
