@@ -15,9 +15,10 @@ public class PortfolioMapper {
                 .id(portfolio.getId())
                 .ticker(portfolio.getTicker())
                 .company(portfolio.getCompany())
-                .shares(portfolio.getShares())
+                .sharesBuy(portfolio.getSharesBuy())
                 .buy(portfolio.getBuy())
                 .sell(portfolio.getSell())
+                .sharesSell(portfolio.getSharesSell())
                 .interestBuySell(portfolio.getInterestBuySell())
                 .profitLossBuySell(portfolio.getProfitLossBuySell())
                 .dividend(portfolio.getDividend())
@@ -34,9 +35,10 @@ public class PortfolioMapper {
                 .id(portfolioAddRequest.getId())
                 .ticker(portfolioAddRequest.getTicker())
                 .company(portfolioAddRequest.getCompany())
-                .shares(portfolioAddRequest.getShares())
+                .sharesBuy(portfolioAddRequest.getShares())
                 .buy(portfolioAddRequest.getBuy())
                 .sell(portfolioAddRequest.getSell())
+                .sharesSell(portfolioAddRequest.getSharesSell())
                 .interestBuySell(portfolioAddRequest.getInterestBuySell())
                 .profitLossBuySell(portfolioAddRequest.getProfitLossBuySell())
                 .dividend(portfolioAddRequest.getDividend())
@@ -48,9 +50,10 @@ public class PortfolioMapper {
 
     public void updatePortfolioFromRequest(Portfolio existingPortfolio, PortfolioAddRequest request) {
         existingPortfolio.setCompany(request.getCompany());
-        existingPortfolio.setShares(request.getShares());
+        existingPortfolio.setSharesBuy(request.getSharesBuy());
         existingPortfolio.setBuy(request.getBuy());
         existingPortfolio.setSell(request.getSell());
+        existingPortfolio.setSharesSell(request.getSharesSell());
         existingPortfolio.setInterestBuySell(request.getInterestBuySell());
         existingPortfolio.setProfitLossBuySell(request.getProfitLossBuySell());
         existingPortfolio.setDividend(request.getDividend());
