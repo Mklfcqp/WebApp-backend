@@ -25,6 +25,19 @@ public class WatchlistAddRequest {
     private BigDecimal dividendYield;
     private String overValuedUnderValued;
 
+
+    public getDividendY() {
+        BigDecimal value = dividendQ.multiply(4);
+        dividendY = value.setScale(2, RoundingMode.HALF_UP);
+        return dividendY;
+    }
+
+    public getDividendYield() {
+        BigDecimal value = (dividendQ.divide(price)).multiply(100);
+        dividendYield = value.setScale(2, RoundingMode.HALF_UP);
+        return dividendYield;
+    }
+
     public String getOverValuedUnderValued() {
         BigDecimal value = (((price.divide(dcf)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
 
