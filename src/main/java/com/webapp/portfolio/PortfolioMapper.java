@@ -35,7 +35,7 @@ public class PortfolioMapper {
                 .id(portfolioAddRequest.getId())
                 .ticker(portfolioAddRequest.getTicker())
                 .company(portfolioAddRequest.getCompany())
-                .sharesBuy(portfolioAddRequest.getShares())
+                .sharesBuy(portfolioAddRequest.getSharesBuy())
                 .buy(portfolioAddRequest.getBuy())
                 .sell(portfolioAddRequest.getSell())
                 .sharesSell(portfolioAddRequest.getSharesSell())

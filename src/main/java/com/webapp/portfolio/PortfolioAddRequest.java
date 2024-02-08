@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.logging.Logger;
 
 @Data
 @Builder
@@ -33,11 +35,24 @@ public class PortfolioAddRequest {
 
     public BigDecimal getProfitLossBuySell() {
 
-        BigDecimal buyRatio = buy.divide(sharesBuy);
-        BigDecimal sellRatio = sell.divide(sharesSell);
+        BigDecimal buyRatio;
+        BigDecimal sellRatio;
+
+        if (sharesBuy != 0) {
+            buyRatio = buy.divide(BigDecimal.valueOf(sharesBuy));
+        } else {
+            buyRatio = BigDecimal.ZERO;
+        }
+
+        if (sharesSell != 0) {
+            sellRatio = sell.divide(BigDecimal.valueOf(sharesSell));
+        } else {
+            sellRatio = BigDecimal.ZERO;
+        }
+
         BigDecimal profLoss1 = sellRatio.subtract(buyRatio);
-        BigDecimal value1 = profLoss1.multiply(sharesSell);
-        BigDecimal value2 = value1.subtract(interestBuySell)
+        BigDecimal value1 = profLoss1.multiply(BigDecimal.valueOf(sharesSell));
+        BigDecimal value2 = value1.subtract(interestBuySell);
 
         //BigDecimal value1 = buy.add(interestBuySell);
         //BigDecimal value2 = sell.subtract(value1);
@@ -54,8 +69,15 @@ public class PortfolioAddRequest {
     }
 
 
-    public BigDecimal getSumProfitLoss(){
-        sumProfitLoss = (getProfitLossBuySell().add(getProfitLossDividend())).setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal getSumProfitLoss() {
+        BigDecimal profitLossBuySell = getProfitLossBuySell();
+        BigDecimal profitLossDividend = getProfitLossDividend();
+
+        if (profitLossBuySell.compareTo(BigDecimal.ZERO) == 0 && profitLossDividend.compareTo(BigDecimal.ZERO) == 0) {
+            return BigDecimal.ZERO;
+        }
+
+        BigDecimal sumProfitLoss = profitLossBuySell.add(profitLossDividend).setScale(2, RoundingMode.HALF_UP);
         return sumProfitLoss;
     }
 }

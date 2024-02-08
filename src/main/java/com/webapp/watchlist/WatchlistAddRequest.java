@@ -25,23 +25,23 @@ public class WatchlistAddRequest {
     private BigDecimal dividendYield;
     private String overValuedUnderValued;
 
-/*
-    public getDividendY() {
-        BigDecimal value = dividendQ.multiply(4);
+
+    public BigDecimal getDividendY() {
+        BigDecimal value = dividendQ.multiply(BigDecimal.valueOf(4));
         dividendY = value.setScale(2, RoundingMode.HALF_UP);
         return dividendY;
     }
 
-    public getDividendYield() {
-        BigDecimal value = (dividendQ.divide(price)).multiply(100);
+    public BigDecimal getDividendYield() {
+        BigDecimal value = (dividendY.divide(price, 2, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100));
         dividendYield = value.setScale(2, RoundingMode.HALF_UP);
         return dividendYield;
     }
 
-    */
+
 
     public String getOverValuedUnderValued() {
-        BigDecimal value = (((price.divide(dcf)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
+        BigDecimal value = (((price.divide(dcf, 2, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
 
         if(value.compareTo(BigDecimal.ZERO) < 0) {
             value = value.abs();
