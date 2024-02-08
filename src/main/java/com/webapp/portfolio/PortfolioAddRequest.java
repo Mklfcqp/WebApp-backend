@@ -17,9 +17,10 @@ public class PortfolioAddRequest {
     private Long id;
     private String ticker;
     private String company;
-    private Long shares;
+    private Long sharesBuy;
     private BigDecimal buy;
     private BigDecimal sell;
+    private Long sharesSell;
     private BigDecimal interestBuySell;
     private BigDecimal profitLossBuySell;
     private BigDecimal dividend;
@@ -31,8 +32,15 @@ public class PortfolioAddRequest {
 
 
     public BigDecimal getProfitLossBuySell() {
-        BigDecimal value1 = buy.add(interestBuySell);
-        BigDecimal value2 = sell.subtract(value1);
+
+        BigDecimal buyRatio = buy.divide(sharesBuy);
+        BigDecimal sellRatio = sell.divide(sharesSell);
+        BigDecimal profLoss1 = sellRatio.subtract(buyRatio);
+        BigDecimal value1 = profLoss1.multiply(sharesSell);
+        BigDecimal value2 = value1.subtract(interestBuySell)
+
+        //BigDecimal value1 = buy.add(interestBuySell);
+        //BigDecimal value2 = sell.subtract(value1);
 
         profitLossBuySell = sell.compareTo(BigDecimal.ZERO) == 0 ? BigDecimal.ZERO : value2;
 
