@@ -39,13 +39,13 @@ public class PortfolioAddRequest {
         BigDecimal sellRatio;
 
         if (sharesBuy != 0) {
-            buyRatio = buy.divide(BigDecimal.valueOf(sharesBuy));
+            buyRatio = buy.divide(BigDecimal.valueOf(sharesBuy), 2, RoundingMode.HALF_UP);
         } else {
             buyRatio = BigDecimal.ZERO;
         }
 
         if (sharesSell != 0) {
-            sellRatio = sell.divide(BigDecimal.valueOf(sharesSell));
+            sellRatio = sell.divide(BigDecimal.valueOf(sharesSell), 2, RoundingMode.HALF_UP);
         } else {
             sellRatio = BigDecimal.ZERO;
         }
@@ -53,9 +53,6 @@ public class PortfolioAddRequest {
         BigDecimal profLoss1 = sellRatio.subtract(buyRatio);
         BigDecimal value1 = profLoss1.multiply(BigDecimal.valueOf(sharesSell));
         BigDecimal value2 = value1.subtract(interestBuySell);
-
-        //BigDecimal value1 = buy.add(interestBuySell);
-        //BigDecimal value2 = sell.subtract(value1);
 
         profitLossBuySell = sell.compareTo(BigDecimal.ZERO) == 0 ? BigDecimal.ZERO : value2;
 
