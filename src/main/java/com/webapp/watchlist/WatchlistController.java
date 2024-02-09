@@ -1,6 +1,11 @@
 package com.webapp.watchlist;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,6 +65,26 @@ public class WatchlistController {
         watchlistService.deleteWatchlist(id);
     }
 
+
+
+
+    @GetMapping("/sorted/disparity")
+    public List<WatchlistGetRequest> sortedDisparity() {
+        return watchlistService.sortedDisparity();
+    }
+
+
+
+
+
+
+//    @GetMapping
+//    public ResponseEntity<Page<WatchlistGetRequest>> getWatchlistsByUserId(
+//            @PathVariable Long userId,
+//            @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+//        Page<WatchlistGetRequest> watchlists = watchlistService.getWatchlistsByUserId(userId, pageable);
+//        return ResponseEntity.ok().body(watchlists);
+//    }
 
 
 }
