@@ -23,9 +23,10 @@ import java.math.BigDecimal;
         private String ticker;
         private String company;
 
-        private Long shares;
+        private Long sharesBuy;
         private BigDecimal buy;
         private BigDecimal sell;
+        private Long sharesSell;
         private BigDecimal interestBuySell;
         private BigDecimal profitLossBuySell;
         private BigDecimal dividend;

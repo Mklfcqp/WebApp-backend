@@ -1,5 +1,9 @@
-package com.webapp.portfolio;
+package com.webapp.dcf;
 
+import com.webapp.portfolio.Portfolio;
+import com.webapp.portfolio.PortfolioAddRequest;
+import com.webapp.portfolio.PortfolioGetRequest;
+import com.webapp.portfolio.PortfolioGetRequestSUM;
 import com.webapp.user.User;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PortfolioMapper {
+public class DcfMapper {
 
     public PortfolioGetRequest toPortfolioGetRequest(Portfolio portfolio) {
 
