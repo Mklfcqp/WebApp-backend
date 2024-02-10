@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/watchlist")
 @RequiredArgsConstructor
 //@CrossOrigin("http://localhost:5173/")
-@CrossOrigin("https://web-app-frontend-alpha.vercel.app/")
+@CrossOrigin("web-app-frontend-alpha.vercel.app/")
 public class WatchlistController {
 
     private final WatchlistService watchlistService;

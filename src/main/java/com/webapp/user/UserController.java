@@ -10,7 +10,7 @@ import java.security.Principal;
 @RequestMapping("/user")
 @RequiredArgsConstructor
 //@CrossOrigin("http://localhost:5173/")
-@CrossOrigin("https://web-app-frontend-alpha.vercel.app/")
+@CrossOrigin("web-app-frontend-alpha.vercel.app/")
 public class UserController {
 
     private final UserService userService;
