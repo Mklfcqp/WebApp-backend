@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/dcf")
 @RequiredArgsConstructor
 //@CrossOrigin("http://localhost:5173/")
-@CrossOrigin("web-app-frontend-alpha.vercel.app")
+@CrossOrigin("https://web-app-frontend-jeolwgw0x-mkqps-projects.vercel.app/")
 public class DcfController {
 
     private final DcfService dcfService;
