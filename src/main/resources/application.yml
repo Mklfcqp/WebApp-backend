@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://roundhouse.proxy.rlwy.net:53232/railway
     username: postgres
-    password: B4qYdKGr&7d69q7X
+    password: 3A*gf3d6gaBeAE5G-b56652fEFc*E-g5
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: false
     properties:
       hibernate:
