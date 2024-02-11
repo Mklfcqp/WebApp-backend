@@ -11,7 +11,6 @@ import java.util.List;
 @RequiredArgsConstructor
 //@CrossOrigin("http://localhost:5173/")
 //@CrossOrigin("https://web-app-frontend-jeolwgw0x-mkqps-projects.vercel.app/")
-@CrossOrigin
 public class PortfolioController {
 
     private final PortfolioService portfolioService;
