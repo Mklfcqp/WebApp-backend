@@ -16,7 +16,6 @@ public class WatchlistService {
 
     private final WatchlistRepository watchlistRepository;
     private final WatchlistMapper watchlistMapper;
-    private final UserRepository userRepository;
 
     public void addCompanyToWatchlist(WatchlistAddRequest request) {
 

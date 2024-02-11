@@ -34,20 +34,20 @@ public class DcfService {
 
     //---------------getDcf()---------------
 
-    public List<WatchlistGetRequest> getDcf() {
+    public List<DcfGetDcfRequest> getDcf() {
 
         return dcfRepository.findById().stream()
-                .map(dcfMapper::toDcfGetDcftRequest)
+                .map(dcfMapper::toDcfGetDcfRequest)
                 .toList();
     }
 
     //---------------getFinancial()---------------
 
 
-    public List<WatchlistGetRequest> getFinancial() {
+    public List<DcfGetFinancialRequest> getFinancial() {
 
         return dcfRepository.findById().stream()
-                .map(dcfMapper::toDcfGetFinancialtRequest)
+                .map(dcfMapper::toDcfGetFinancialRequest)
                 .toList();
     }
 

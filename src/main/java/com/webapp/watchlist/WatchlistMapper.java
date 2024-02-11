@@ -14,7 +14,7 @@ public class WatchlistMapper {
                 .company(watchlist.getCompany())
                 .price(watchlist.getPrice())
                 .currencyPrice(watchlist.getCurrencyPrice())
-                .dcf(watchlist.getDcf().getDcfWithMarginOfSafety())
+//                .dcf(watchlist.getDcf().getDcfWithMarginOfSafety()) get Watchlist i s dcf?
                 .currencyDcf(watchlist.getCurrencyDcf())
                 .dividendY(watchlist.getDividendY())
                 .currencyDividendY(watchlist.getCurrencyDividendY())
