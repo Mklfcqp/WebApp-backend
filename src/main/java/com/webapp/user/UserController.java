@@ -9,9 +9,8 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-//@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("http://localhost:5173/")
 //@CrossOrigin("https://web-app-frontend-jeolwgw0x-mkqps-projects.vercel.app/")
-@CrossOrigin
 public class UserController {
 
     private final UserService userService;

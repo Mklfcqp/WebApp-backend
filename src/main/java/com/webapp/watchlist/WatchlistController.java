@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/watchlist")
 @RequiredArgsConstructor
-//@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("http://localhost:5173/")
 //@CrossOrigin("https://web-app-frontend-jeolwgw0x-mkqps-projects.vercel.app/")
 public class WatchlistController {
 
@@ -38,12 +38,6 @@ public class WatchlistController {
         return watchlistService.getWatchlists();
     }
 
-    //---------------loadWatchlistDataById()---------------
-
-//    @GetMapping("/load/{id}")
-//    public WatchlistGetRequest getWatchlistById(@PathVariable("id") Long id){
-//        return watchlistService.getWatchlistById(id);
-//    }
 
     //---------------updateWatchlistData()---------------
 
@@ -73,18 +67,6 @@ public class WatchlistController {
         return watchlistService.sortedDisparity();
     }
 
-
-
-
-
-
-//    @GetMapping
-//    public ResponseEntity<Page<WatchlistGetRequest>> getWatchlistsByUserId(
-//            @PathVariable Long userId,
-//            @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-//        Page<WatchlistGetRequest> watchlists = watchlistService.getWatchlistsByUserId(userId, pageable);
-//        return ResponseEntity.ok().body(watchlists);
-//    }
 
 
 }

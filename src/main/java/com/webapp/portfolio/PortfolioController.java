@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/portfolio")
 @RequiredArgsConstructor
-//@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("http://localhost:5173/")
 //@CrossOrigin("https://web-app-frontend-jeolwgw0x-mkqps-projects.vercel.app/")
 public class PortfolioController {
 
