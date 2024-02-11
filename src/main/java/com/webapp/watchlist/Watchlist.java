@@ -33,9 +33,9 @@ public class Watchlist {
     private BigDecimal dividendYield;
     private String overValuedUnderValued;
 
-    private BigDecimal dcf;
-//    @OneToOne(mappedBy = "watchlist")
-//    private Dcf dcf;
+//    private BigDecimal dcf;
+    @OneToOne(mappedBy = "watchlist")
+    private Dcf dcf;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

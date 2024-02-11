@@ -38,13 +38,6 @@ public class WatchlistController {
         return watchlistService.getWatchlists();
     }
 
-    //---------------loadWatchlistDataById()---------------
-
-//    @GetMapping("/load/{id}")
-//    public WatchlistGetRequest getWatchlistById(@PathVariable("id") Long id){
-//        return watchlistService.getWatchlistById(id);
-//    }
-
     //---------------updateWatchlistData()---------------
 
     @PutMapping("/update")
@@ -76,15 +69,6 @@ public class WatchlistController {
 
 
 
-
-
-//    @GetMapping
-//    public ResponseEntity<Page<WatchlistGetRequest>> getWatchlistsByUserId(
-//            @PathVariable Long userId,
-//            @PageableDefault(size = 20, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-//        Page<WatchlistGetRequest> watchlists = watchlistService.getWatchlistsByUserId(userId, pageable);
-//        return ResponseEntity.ok().body(watchlists);
-//    }
 
 
 }
