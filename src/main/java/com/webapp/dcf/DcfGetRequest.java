@@ -5,9 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Data
-//@Builder
-//@AllArgsConstructor
-//@NoArgsConstructor
+import java.math.BigDecimal;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class DcfGetRequest {
+
+    private Long id;
+    private BigDecimal dcfWithMarginOfSafety;
+
 }

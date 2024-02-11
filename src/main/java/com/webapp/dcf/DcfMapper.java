@@ -5,6 +5,7 @@ import com.webapp.portfolio.PortfolioAddRequest;
 import com.webapp.portfolio.PortfolioGetRequest;
 import com.webapp.portfolio.PortfolioGetRequestSUM;
 import com.webapp.user.User;
+import com.webapp.watchlist.Watchlist;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,22 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class DcfMapper {
 
-    public PortfolioGetRequest toPortfolioGetRequest(Portfolio portfolio) {
+    public DcfGetRequest toPortfolioGetRequest(Dcf dcf, Watchlist watchlist) {
 
-        return PortfolioGetRequest.builder()
-                .id(portfolio.getId())
-                .ticker(portfolio.getTicker())
-                .company(portfolio.getCompany())
-                .sharesBuy(portfolio.getSharesBuy())
-                .buy(portfolio.getBuy())
-                .sell(portfolio.getSell())
-                .sharesSell(portfolio.getSharesSell())
-                .interestBuySell(portfolio.getInterestBuySell())
-                .profitLossBuySell(portfolio.getProfitLossBuySell())
-                .dividend(portfolio.getDividend())
-                .interestDividend(portfolio.getInterestDividend())
-                .profitLossDividend(portfolio.getProfitLossDividend())
-                .sumProfitLoss(portfolio.getSumProfitLoss())
+        return DcfGetRequest.builder()
+                .id(watchlist.getId())
+                .id(dcf.getId())
+                .dcfWithMarginOfSafety(dcf.getDcfWithMarginOfSafety())
                 .build();
     }
 
