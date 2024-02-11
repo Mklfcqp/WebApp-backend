@@ -27,47 +27,47 @@ public class DcfAddCalcRequest {
     private BigDecimal freeCashFlow6;
     private BigDecimal freeCashFlow7;
 
-    private BigDecimal growth0; // growth0 = (freeCashFlow0 - freeCashFlow1) / freeCashFlow1
-    private BigDecimal growth1; // growth1 = (freeCashFlow1 - freeCashFlow2) / freeCashFlow2
-    private BigDecimal growth2; // growth2 = (freeCashFlow2 - freeCashFlow3) / freeCashFlow3
-    private BigDecimal growth3; // growth3 = (freeCashFlow3 - freeCashFlow4) / freeCashFlow4
-    private BigDecimal growth4; // growth4 = (freeCashFlow4 - freeCashFlow5) / freeCashFlow5
-    private BigDecimal growth5; // growth5 = (freeCashFlow5 - freeCashFlow6) / freeCashFlow6
-    private BigDecimal growth6; // growth6 = (freeCashFlow6 - freeCashFlow7) / freeCashFlow7
+    private BigDecimal growth0;
+    private BigDecimal growth1;
+    private BigDecimal growth2;
+    private BigDecimal growth3;
+    private BigDecimal growth4;
+    private BigDecimal growth5;
+    private BigDecimal growth6;
 
     private BigDecimal growthRate;
-    private BigDecimal avgGrowthRate; // vypocet (viz nize)
+    private BigDecimal avgGrowthRate;
 
-    private BigDecimal futureFreeCashFlow0; // futureFreeCashFlow0 = freeCashFlow0 * (1 + growthRate)
-    private BigDecimal futureFreeCashFlow1; // futureFreeCashFlow1 = futureFreeCashFlow0 * (1 + growthRate)
-    private BigDecimal futureFreeCashFlow2; // futureFreeCashFlow2 = futureFreeCashFlow1 * (1 + growthRate)
-    private BigDecimal futureFreeCashFlow3; // futureFreeCashFlow3 = futureFreeCashFlow2 * (1 + growthRate)
-    private BigDecimal futureFreeCashFlow4; // futureFreeCashFlow4 = futureFreeCashFlow3 * (1 + growthRate)
-    private BigDecimal futureFreeCashFlow5; // futureFreeCashFlow5 = futureFreeCashFlow4 * (1 + growthRate)
-    private BigDecimal futureFreeCashFlow6; // futureFreeCashFlow6 = futureFreeCashFlow5 * (1 + growthRate)
+    private BigDecimal futureFreeCashFlow0;
+    private BigDecimal futureFreeCashFlow1;
+    private BigDecimal futureFreeCashFlow2;
+    private BigDecimal futureFreeCashFlow3;
+    private BigDecimal futureFreeCashFlow4;
+    private BigDecimal futureFreeCashFlow5;
+    private BigDecimal futureFreeCashFlow6;
 
-    private BigDecimal terminalValue; // terminalValue = futureFreeCashFlow6 * (1 + perpetualGrowthRate) / (discountRate - perpetualGrowthRate)
+    private BigDecimal terminalValue;
 
-    private BigDecimal pvOfFreeCashFlow0; // pvOfFreeCashFlow0 = futureFreeCashFlow0 / Math.pow((1 + discountRate), 1)
-    private BigDecimal pvOfFreeCashFlow1; // pvOfFreeCashFlow1 = futureFreeCashFlow1 / Math.pow((1 + discountRate), 2)
-    private BigDecimal pvOfFreeCashFlow2; // pvOfFreeCashFlow2 = futureFreeCashFlow2 / Math.pow((1 + discountRate), 3)
-    private BigDecimal pvOfFreeCashFlow3; // pvOfFreeCashFlow3 = futureFreeCashFlow3 / Math.pow((1 + discountRate), 4)
-    private BigDecimal pvOfFreeCashFlow4; // pvOfFreeCashFlow4 = futureFreeCashFlow4 / Math.pow((1 + discountRate), 5)
-    private BigDecimal pvOfFreeCashFlow5; // pvOfFreeCashFlow5 = futureFreeCashFlow5 / Math.pow((1 + discountRate), 6)
-    private BigDecimal pvOfFreeCashFlow6; // pvOfFreeCashFlow6 = futureFreeCashFlow6 / Math.pow((1 + discountRate), 7)
-    private BigDecimal pvOfFreeCashFlow7; // pvOfFreeCashFlow7 = futureFreeCashFlow7 / Math.pow((1 + discountRate), 8)
+    private BigDecimal pvOfFreeCashFlow0;
+    private BigDecimal pvOfFreeCashFlow1;
+    private BigDecimal pvOfFreeCashFlow2;
+    private BigDecimal pvOfFreeCashFlow3;
+    private BigDecimal pvOfFreeCashFlow4;
+    private BigDecimal pvOfFreeCashFlow5;
+    private BigDecimal pvOfFreeCashFlow6;
+    private BigDecimal pvOfFreeCashFlow7;
 
     private BigDecimal perpetualGrowthRate;
     private BigDecimal discountRate;
 
-    private BigDecimal sumPvOfFcf; // vypocet (viz nize)
+    private BigDecimal sumPvOfFcf;
     private BigDecimal cash;
     private BigDecimal totalDebt;
 
-    private BigDecimal equityValue; // equityValue = sumPvOfFcf + cash - totalDebt
+    private BigDecimal equityValue;
     private BigDecimal sharesOutstanding;
 
-    private BigDecimal dcfWithoutMarginOfSafety; // dcfWithoutMarginOfSafety = equityValue / sharesOutstanding
+    private BigDecimal dcfWithoutMarginOfSafety;
     private BigDecimal dcfWithMarginOfSafety;
 
 
@@ -118,11 +118,9 @@ public class DcfAddCalcRequest {
             sum = sum.add(value);
         }
 
-        // Výpočet průměru - nutná úprava
         if (count != 0) {
             avgGrowthRate = sum.divide(BigDecimal.valueOf(count), 2, BigDecimal.ROUND_HALF_UP);
         } else {
-            // Pokud není žádná hodnota k dispozici, průměr bude nula - změnit
             avgGrowthRate = BigDecimal.ZERO;
         }
 
@@ -218,20 +216,29 @@ public class DcfAddCalcRequest {
         pvOfFreeCashFlow6 = futureFreeCashFlow6.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow6;
     }
-
-    // zmenit vypocet
-//    public BigDecimal getPvOfFreeCashFlow7() {
-//        // pvOfFreeCashFlow7 = futureFreeCashFlow7 / Math.pow((1 + discountRate), 8)
-//        BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
-//        BigDecimal denominatorPowered = denominator.pow(1);
-//        pvOfFreeCashFlow7 = futureFreeCashFlow7.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
-//        return pvOfFreeCashFlow7;
-//    }
+    public BigDecimal getPvOfFreeCashFlow7() {
+        BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
+        BigDecimal denominatorPowered = denominator.pow(8);
+        pvOfFreeCashFlow7 = terminalValue.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        return pvOfFreeCashFlow7;
+    }
 
 
     public BigDecimal getSumPvOfFcf() {
-        // vypocet (viz nize)
+        BigDecimal[] growthValues = {pvOfFreeCashFlow1, pvOfFreeCashFlow2, pvOfFreeCashFlow3, pvOfFreeCashFlow4,
+                pvOfFreeCashFlow5, pvOfFreeCashFlow6, pvOfFreeCashFlow7};
+
+        int count = growthValues.length;
+
+        BigDecimal sum = BigDecimal.ZERO;
+
+        for (BigDecimal value : growthValues) {
+            sum = sum.add(value);
+        }
+        sumPvOfFcf = sum;
+
         return sumPvOfFcf;
+
     }
 
     public BigDecimal getEquityValue() {
