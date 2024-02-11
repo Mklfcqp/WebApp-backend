@@ -3,15 +3,10 @@ package com.webapp.watchlist;
 import com.webapp.user.User;
 import com.webapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Comparator;
 import java.util.List;
 
 
@@ -49,14 +44,14 @@ public class WatchlistService {
     }
 
     //---------------updateWatchlistData()---------------
-        public void updateWatchlist(WatchlistAddRequest request) {
-            User currentUser = getCurrentUser();
-            if (currentUser == null) {
-                throw new IllegalStateException("User not authenticated");
-            }
+    public void updateWatchlist(WatchlistAddRequest request) {
+        User currentUser = getCurrentUser();
+        if (currentUser == null) {
+            throw new IllegalStateException("User not authenticated");
+        }
 
-            Watchlist watchlist = watchlistMapper.toWatchlist(request, currentUser);
-            watchlistRepository.save(watchlist);
+        Watchlist watchlist = watchlistMapper.toWatchlist(request, currentUser);
+        watchlistRepository.save(watchlist);
     }
 
 
@@ -67,38 +62,22 @@ public class WatchlistService {
 
     //---------------getCurrentUser()---------------
 
-        private User getCurrentUser() {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication == null || !authentication.isAuthenticated()) {
-                return null;
-            }
-
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof User) {
-                return (User) principal;
-            }
-
+    private User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated()) {
             return null;
         }
 
-
-    //---------------getCurrentUser()---------------
-
-    public List<WatchlistGetRequest> sortedCompany() {
-        User currentUser = getCurrentUser();
-        if (currentUser == null) {
-            throw new IllegalStateException("User not authenticated");
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof User) {
+            return (User) principal;
         }
 
-        Long userId = currentUser.getId();
-        return watchlistRepository.findByUserId(userId).stream()
-                .map(watchlistMapper::toWatchlistGetRequest)
-                .sorted(Comparator.comparing(WatchlistGetRequest::getCompany))
-                .toList();
+        return null;
     }
 
 
-
+    //---------------sortedDisparity()---------------
 
     public List<WatchlistGetRequest> sortedDisparity() {
         User currentUser = getCurrentUser();
@@ -125,6 +104,7 @@ public class WatchlistService {
                 })
                 .toList();
     }
+
 
 
 
