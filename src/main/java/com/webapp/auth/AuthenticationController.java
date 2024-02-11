@@ -12,7 +12,7 @@ import java.io.IOException;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 //@CrossOrigin("http://localhost:5173/")
-//@CrossOrigin()
+@CrossOrigin()
 public class AuthenticationController {
 
     private final AuthenticationService service;

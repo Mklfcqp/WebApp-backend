@@ -9,7 +9,7 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-@CrossOrigin("http://localhost:5173/")
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;
