@@ -2,6 +2,7 @@ package com.webapp.auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-//@CrossOrigin("http://localhost:5173/")
+@CrossOrigin("http://localhost:5173/")
 //@CrossOrigin("https://web-app-frontend-jeolwgw0x-mkqps-projects.vercel.app/")
 public class AuthenticationController {
 
@@ -19,6 +20,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
+            @Valid
             @RequestBody RegisterRequest request
     ) {
         return ResponseEntity.ok(service.register(request));

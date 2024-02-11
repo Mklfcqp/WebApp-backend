@@ -128,18 +128,4 @@ public class WatchlistService {
 
 
 
-
-
-
-
-
-//    public Page<WatchlistGetRequest> getWatchlistsByUserId(Long userId, Pageable pageable) {
-//        return watchlistRepository.findByUserId(userId, pageable)
-//                .map(watchlistMapper::toWatchlistGetRequest);
-//    }
-
-
-
-
-
 }

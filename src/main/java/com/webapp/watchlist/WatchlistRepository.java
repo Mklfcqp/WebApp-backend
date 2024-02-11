@@ -14,5 +14,4 @@ public interface WatchlistRepository extends JpaRepository<Watchlist, Long> {
     List<Watchlist> findByUserId(Long userId);
 
 
-//    Page<Watchlist> findByUserId(Long userId, Pageable pageable);
 }
