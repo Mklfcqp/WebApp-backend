@@ -1,6 +1,5 @@
 package com.webapp.watchlist;
 
-import com.webapp.dcf.Dcf;
 import com.webapp.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
