@@ -4,6 +4,9 @@ import com.webapp.portfolio.Portfolio;
 import com.webapp.token.Token;
 import com.webapp.watchlist.Watchlist;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,6 +29,10 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue
   private Long id;
+
+  @NotBlank
+  @Size(max = 50)
+  @Email
   private String email;
   private String password;
 
