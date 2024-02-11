@@ -32,46 +32,47 @@ public class DcfService {
 
     }
 
-    //---------------getDcf()---------------
-
-    public List<DcfGetDcfRequest> getDcf() {
-
-        return dcfRepository.findById().stream()
-                .map(dcfMapper::toDcfGetDcfRequest)
-                .toList();
-    }
-
-    //---------------getFinancial()---------------
-
-
-    public List<DcfGetFinancialRequest> getFinancial() {
-
-        return dcfRepository.findById().stream()
-                .map(dcfMapper::toDcfGetFinancialRequest)
-                .toList();
-    }
-
-    //---------------updateDcfManual()---------------
-
-    public void updateDcfManual(DcfAddManualRequest request) {
-
-        Dcf dcf = dcfMapper.manualToDcf(request);
-        dcfRepository.save(dcf);
-    }
-
-    //---------------updateDcfCalc()---------------
-
-    public void updateDcfCalc(DcfAddCalcRequest request) {
-
-        Dcf dcf = dcfMapper.calcToDcf(request);
-        dcfRepository.save(dcf);
-    }
-
-    //---------------deleteDcf()---------------
-
-    public void deleteDcf(Long id) {
-        dcfRepository.deleteById(id);
-    }
+//    //---------------getDcf()---------------
+//
+//    public List<DcfGetDcfRequest> getDcf() {
+//
+//        Long watchlistId = dcfMapper.
+//        return dcfRepository.findByWatchlistId(watchlistId).stream()
+//                .map(dcfMapper::toDcfGetDcfRequest)
+//                .toList();
+//    }
+//
+//    //---------------getFinancial()---------------
+//
+//
+//    public List<DcfGetFinancialRequest> getFinancial() {
+//
+//        return dcfRepository.findByWatchlistId().stream()
+//                .map(dcfMapper::toDcfGetFinancialRequest)
+//                .toList();
+//    }
+//
+//    //---------------updateDcfManual()---------------
+//
+//    public void updateDcfManual(DcfAddManualRequest request) {
+//
+//        Dcf dcf = dcfMapper.manualToDcf(request);
+//        dcfRepository.save(dcf);
+//    }
+//
+//    //---------------updateDcfCalc()---------------
+//
+//    public void updateDcfCalc(DcfAddCalcRequest request) {
+//
+//        Dcf dcf = dcfMapper.calcToDcf(request);
+//        dcfRepository.save(dcf);
+//    }
+//
+//    //---------------deleteDcf()---------------
+//
+//    public void deleteDcf(Long id) {
+//        dcfRepository.deleteById(id);
+//    }
 
 
 }

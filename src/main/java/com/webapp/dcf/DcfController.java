@@ -41,53 +41,53 @@ public class DcfController {
         }
     }
 
-    //---------------getDcf()---------------
-
-    @GetMapping("/load/dcf")
-    public List<DcfGetDcfRequest> getDcf(){
-        return dcfService.getDcf();
-    }
-
-    //---------------getFinancial()---------------
-
-    @GetMapping("/load/financial")
-    public List<DcfGetFinancialRequest> getFinancial(){
-        return dcfService.getFinancial();
-    }
-
-    //---------------updateDcfManual()---------------
-
-    @PutMapping("/update/manual")
-    public ResponseEntity<String> updateDcfManual(@RequestBody DcfAddManualRequest request){
-        try {
-
-            dcfService.updateDcfManual(request);
-            return ResponseEntity.ok("Dcf updated successfully");
-        } catch (IllegalStateException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
-    //---------------updateDcfCalc()---------------
-
-    @PutMapping("/update/calc")
-    public ResponseEntity<String> updateDcfCalc(@RequestBody DcfAddCalcRequest request){
-        try {
-
-            dcfService.updateDcfCalc(request);
-            return ResponseEntity.ok("Dcf updated successfully");
-        } catch (IllegalStateException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
-    //---------------deleteDcf()---------------
-
-    @DeleteMapping("/delete/{id}")
-    public void deleteDcf(@PathVariable("id") Long id){
-        dcfService.deleteDcf(id);
-    }
-
+//    //---------------getDcf()---------------
+//
+//    @GetMapping("/load/dcf")
+//    public List<DcfGetDcfRequest> getDcf(){
+//        return dcfService.getDcf();
+//    }
+//
+//    //---------------getFinancial()---------------
+//
+//    @GetMapping("/load/financial")
+//    public List<DcfGetFinancialRequest> getFinancial(){
+//        return dcfService.getFinancial();
+//    }
+//
+//    //---------------updateDcfManual()---------------
+//
+//    @PutMapping("/update/manual")
+//    public ResponseEntity<String> updateDcfManual(@RequestBody DcfAddManualRequest request){
+//        try {
+//
+//            dcfService.updateDcfManual(request);
+//            return ResponseEntity.ok("Dcf updated successfully");
+//        } catch (IllegalStateException e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
+//
+//    //---------------updateDcfCalc()---------------
+//
+//    @PutMapping("/update/calc")
+//    public ResponseEntity<String> updateDcfCalc(@RequestBody DcfAddCalcRequest request){
+//        try {
+//
+//            dcfService.updateDcfCalc(request);
+//            return ResponseEntity.ok("Dcf updated successfully");
+//        } catch (IllegalStateException e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
+//
+//    //---------------deleteDcf()---------------
+//
+//    @DeleteMapping("/delete/{id}")
+//    public void deleteDcf(@PathVariable("id") Long id){
+//        dcfService.deleteDcf(id);
+//    }
+//
 
 
 }

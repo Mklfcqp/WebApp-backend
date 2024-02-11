@@ -1,5 +1,6 @@
 package com.webapp.watchlist;
 
+import com.webapp.dcf.Dcf;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ public class WatchlistAddRequest {
     private String company;
     private BigDecimal price;
     private String currencyPrice;
-    private BigDecimal dcf;
+    private Dcf dcf;
     private String currencyDcf;
     private BigDecimal dividendY;
     private String currencyDividendY;
@@ -41,7 +42,7 @@ public class WatchlistAddRequest {
 
 
     public String getOverValuedUnderValued() {
-        BigDecimal value = (((price.divide(dcf, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
+        BigDecimal value = (((price.divide(dcf.getDcfWithMarginOfSafety(), 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
 
         if(value.compareTo(BigDecimal.ZERO) < 0) {
             value = value.abs();

@@ -78,6 +78,7 @@ public class Dcf {
     @JoinColumn(name = "watchlist_id")
     private Watchlist watchlist;
 
-
-
+    public Dcf(BigDecimal dcfWithMarginOfSafety) {
+        this.dcfWithMarginOfSafety = dcfWithMarginOfSafety;
+    }
 }
