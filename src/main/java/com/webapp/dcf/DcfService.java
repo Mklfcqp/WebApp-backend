@@ -69,7 +69,7 @@ public class DcfService {
 
     //---------------deleteDcf()---------------
 
-    public void deleteWatchlist(Long id) {
+    public void deleteDcf(Long id) {
         dcfRepository.deleteById(id);
     }
 

@@ -51,7 +51,7 @@ public class DcfController {
     //---------------getFinancial()---------------
 
     @GetMapping("/load/financial")
-    public List<DcfGetDcfRequest> getFinancial(){
+    public List<DcfGetFinancialRequest> getFinancial(){
         return dcfService.getFinancial();
     }
 
