@@ -21,8 +21,6 @@ public class Dcf {
     @GeneratedValue
     private Long id;
 
-    private String company;
-
     private BigDecimal freeCashFlow0;
     private BigDecimal freeCashFlow1;
     private BigDecimal freeCashFlow2;
