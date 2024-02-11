@@ -18,7 +18,6 @@ public class WatchlistGetRequest {
     private String company;
     private BigDecimal price;
     private String currencyPrice;
-    private BigDecimal dcf;
     private String currencyDcf;
     private BigDecimal dividendY;
     private String currencyDividendY;
