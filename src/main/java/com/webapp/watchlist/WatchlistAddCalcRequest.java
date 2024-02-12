@@ -274,30 +274,31 @@ public class WatchlistAddCalcRequest {
         return equityValue;
     }
 
-    public BigDecimal getDcfWithoutMarginOfSafety() {
-        BigDecimal value = equityValue.divide(sharesOutstanding, 2, RoundingMode.HALF_UP);
-        dcfWithoutMarginOfSafety = value.setScale(2, RoundingMode.HALF_UP);
-        return dcfWithoutMarginOfSafety;
-    }
+//    public BigDecimal getDcfWithoutMarginOfSafety() {
+//        BigDecimal value = equityValue.divide(sharesOutstanding, 2, RoundingMode.HALF_UP);
+//        dcfWithoutMarginOfSafety = value.setScale(2, RoundingMode.HALF_UP);
+//        return dcfWithoutMarginOfSafety;
+//    }
 
-    public BigDecimal getDcfWithMarginOfSafety() {
-        BigDecimal value = dcfWithoutMarginOfSafety.multiply(BigDecimal.valueOf(0.8));
-        dcfWithMarginOfSafety = value.setScale(2, RoundingMode.HALF_UP);
-        return dcfWithMarginOfSafety;
-    }
+//    public BigDecimal getDcfWithMarginOfSafety() {
+//        BigDecimal value = dcfWithoutMarginOfSafety.multiply(BigDecimal.valueOf(0.8));
+//        dcfWithMarginOfSafety = value.setScale(2, RoundingMode.HALF_UP);
+//        return dcfWithMarginOfSafety;
+//    }
 
 
-
-    public String getOverValuedUnderValued() {
-        BigDecimal value = (((price.divide(dcfWithMarginOfSafety, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
-
-        if(value.compareTo(BigDecimal.ZERO) < 0) {
-            value = value.abs();
-            return overValuedUnderValued = value.setScale(0, RoundingMode.HALF_UP) + " %" + " Undervalued";
-        } else if(value.compareTo(BigDecimal.ZERO) > 0) {
-            return overValuedUnderValued = value.setScale(0, RoundingMode.HALF_UP) + " %" + " Overvalued";
-        } else {
-            return overValuedUnderValued = "0 %";
-        }
-    }
+//
+//
+//    public String getOverValuedUnderValued() {
+//        BigDecimal value = (((price.divide(dcfWithMarginOfSafety, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100))).subtract(BigDecimal.valueOf(100)));
+//
+//        if(value.compareTo(BigDecimal.ZERO) < 0) {
+//            value = value.abs();
+//            return overValuedUnderValued = value.setScale(0, RoundingMode.HALF_UP) + " %" + " Undervalued";
+//        } else if(value.compareTo(BigDecimal.ZERO) > 0) {
+//            return overValuedUnderValued = value.setScale(0, RoundingMode.HALF_UP) + " %" + " Overvalued";
+//        } else {
+//            return overValuedUnderValued = "0 %";
+//        }
+//    }
 }
