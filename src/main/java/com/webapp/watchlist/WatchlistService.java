@@ -16,14 +16,31 @@ public class WatchlistService {
     private final WatchlistRepository watchlistRepository;
     private final WatchlistMapper watchlistMapper;
 
-    public void addCompanyToWatchlist(WatchlistAddManualRequest request) {
+
+    //---------------addWatchlistDataManual()---------------
+
+    public void addWatchlistDataManual(WatchlistAddManualRequest request) {
 
         User currentUser = getCurrentUser();
         if (currentUser == null) {
             throw new IllegalStateException("User not authenticated");
         }
 
-        Watchlist watchlist = watchlistMapper.toWatchlist(request, currentUser);
+        Watchlist watchlist = watchlistMapper.WatchlistAddManualRequestToWatchlist(request, currentUser);
+        watchlistRepository.save(watchlist);
+
+    }
+
+    //---------------addWatchlistDataCalc()---------------
+
+    public void addWatchlistDataCalc(WatchlistAddCalcRequest request) {
+
+        User currentUser = getCurrentUser();
+        if (currentUser == null) {
+            throw new IllegalStateException("User not authenticated");
+        }
+
+        Watchlist watchlist = watchlistMapper.WatchlistAddCalcRequestToWatchlist(request, currentUser);
         watchlistRepository.save(watchlist);
 
     }
@@ -41,14 +58,26 @@ public class WatchlistService {
                 .toList();
     }
 
-    //---------------updateWatchlistData()---------------
-    public void updateWatchlist(WatchlistAddManualRequest request) {
+    //---------------updateWatchlistDataManual()---------------
+    public void updateWatchlistDataManual(WatchlistAddManualRequest request) {
         User currentUser = getCurrentUser();
         if (currentUser == null) {
             throw new IllegalStateException("User not authenticated");
         }
 
-        Watchlist watchlist = watchlistMapper.toWatchlist(request, currentUser);
+        Watchlist watchlist = watchlistMapper.WatchlistAddManualRequestToWatchlist(request, currentUser);
+        watchlistRepository.save(watchlist);
+    }
+
+
+    //---------------updateWatchlistDataCalc()---------------
+    public void updateWatchlistDataCalc(WatchlistAddCalcRequest request) {
+        User currentUser = getCurrentUser();
+        if (currentUser == null) {
+            throw new IllegalStateException("User not authenticated");
+        }
+
+        Watchlist watchlist = watchlistMapper.WatchlistAddCalcRequestToWatchlist(request, currentUser);
         watchlistRepository.save(watchlist);
     }
 

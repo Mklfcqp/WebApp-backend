@@ -15,16 +15,32 @@ public class WatchlistController {
 
     private final WatchlistService watchlistService;
 
-    @PostMapping("/add")
-    public ResponseEntity<String> addCompanyToWatchlist(@RequestBody WatchlistAddManualRequest request) {
+
+    //---------------addWatchlistDataManual()---------------
+    @PostMapping("/add/manual")
+    public ResponseEntity<String> addWatchlistDataManual(@RequestBody WatchlistAddManualRequest request) {
         try {
 
-            watchlistService.addCompanyToWatchlist(request);
+            watchlistService.addWatchlistDataManual(request);
             return ResponseEntity.ok("Watchlist item added successfully");
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    //---------------addWatchlistDataCalc()---------------
+
+    @PostMapping("/add/calc")
+    public ResponseEntity<String> addWatchlistDataCalc(@RequestBody WatchlistAddCalcRequest request) {
+        try {
+
+            watchlistService.addWatchlistDataCalc(request);
+            return ResponseEntity.ok("Watchlist item added successfully");
+        } catch (IllegalStateException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
     //---------------loadWatchlistData()---------------
 
@@ -34,13 +50,27 @@ public class WatchlistController {
     }
 
 
-    //---------------updateWatchlistData()---------------
+    //---------------updateWatchlistDataManual()---------------
 
-    @PutMapping("/update")
-    public ResponseEntity<String> updateWatchlist(@RequestBody WatchlistAddManualRequest request){
+    @PutMapping("/update/manual")
+    public ResponseEntity<String> updateWatchlistDataManual(@RequestBody WatchlistAddManualRequest request){
         try {
 
-            watchlistService.updateWatchlist(request);
+            watchlistService.updateWatchlistDataManual(request);
+            return ResponseEntity.ok("Watchlist item updated successfully");
+        } catch (IllegalStateException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+    //---------------updateWatchlistData()---------------
+
+    @PutMapping("/update/calc")
+    public ResponseEntity<String> updateWatchlistDataCalc(@RequestBody WatchlistAddCalcRequest request){
+        try {
+
+            watchlistService.updateWatchlistDataCalc(request);
             return ResponseEntity.ok("Watchlist item updated successfully");
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
