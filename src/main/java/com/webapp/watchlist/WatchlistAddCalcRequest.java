@@ -90,27 +90,32 @@ public class WatchlistAddCalcRequest {
 
 
     public BigDecimal getGrowth0() {
-        growth0 = (freeCashFlow0.subtract(freeCashFlow1)).divide(freeCashFlow1, 2, RoundingMode.HALF_UP);
+        BigDecimal value = (freeCashFlow0.subtract(freeCashFlow1)).divide(freeCashFlow1, 2, RoundingMode.HALF_UP);
+        growth0 = value.setScale(2, RoundingMode.HALF_UP);
         return growth0;
     }
 
     public BigDecimal getGrowth1() {
-        growth1 = (freeCashFlow1.subtract(freeCashFlow2)).divide(freeCashFlow2, 2, RoundingMode.HALF_UP);
+        BigDecimal value = (freeCashFlow1.subtract(freeCashFlow2)).divide(freeCashFlow2, 2, RoundingMode.HALF_UP);
+        growth1 = value.setScale(2, RoundingMode.HALF_UP);
         return growth1;
     }
 
     public BigDecimal getGrowth2() {
-        growth2 = (freeCashFlow2.subtract(freeCashFlow3)).divide(freeCashFlow3, 2, RoundingMode.HALF_UP);
+        BigDecimal value = (freeCashFlow2.subtract(freeCashFlow3)).divide(freeCashFlow3, 2, RoundingMode.HALF_UP);
+        growth2 = value.setScale(2, RoundingMode.HALF_UP);
         return growth2;
     }
 
     public BigDecimal getGrowth3() {
-        growth3 = (freeCashFlow3.subtract(freeCashFlow4)).divide(freeCashFlow4, 2, RoundingMode.HALF_UP);
+        BigDecimal value = (freeCashFlow3.subtract(freeCashFlow4)).divide(freeCashFlow4, 2, RoundingMode.HALF_UP);
+        growth3 = value.setScale(2, RoundingMode.HALF_UP);
         return growth3;
     }
 
     public BigDecimal getGrowth4() {
-        growth4 = (freeCashFlow4.subtract(freeCashFlow5)).divide(freeCashFlow5, 2, RoundingMode.HALF_UP);
+        BigDecimal value = (freeCashFlow4.subtract(freeCashFlow5)).divide(freeCashFlow5, 2, RoundingMode.HALF_UP);
+        growth4 = value.setScale(2, RoundingMode.HALF_UP);
         return growth4;
     }
 
@@ -136,98 +141,114 @@ public class WatchlistAddCalcRequest {
     }
 
     public BigDecimal getFutureFreeCashFlow0() {
-        futureFreeCashFlow0 = freeCashFlow0.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = freeCashFlow0.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow0 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow0;
     }
 
     public BigDecimal getFutureFreeCashFlow1() {
-        futureFreeCashFlow1 = futureFreeCashFlow0.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = futureFreeCashFlow0.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow1 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow1;
     }
 
     public BigDecimal getFutureFreeCashFlow2() {
-        futureFreeCashFlow2 = futureFreeCashFlow1.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = futureFreeCashFlow1.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow2 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow2;
     }
 
     public BigDecimal getFutureFreeCashFlow3() {
-        futureFreeCashFlow3 = futureFreeCashFlow2.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = futureFreeCashFlow2.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow3 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow3;
     }
 
     public BigDecimal getFutureFreeCashFlow4() {
-        futureFreeCashFlow4 = futureFreeCashFlow3.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = futureFreeCashFlow3.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow4 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow4;
     }
 
     public BigDecimal getFutureFreeCashFlow5() {
-        futureFreeCashFlow5 = futureFreeCashFlow4.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = futureFreeCashFlow4.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow5 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow5;
     }
 
     public BigDecimal getFutureFreeCashFlow6() {
-        futureFreeCashFlow6 = futureFreeCashFlow5.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        BigDecimal value = futureFreeCashFlow5.multiply((BigDecimal.valueOf(1).add(growthRate)));
+        futureFreeCashFlow6 = value.setScale(2, RoundingMode.HALF_UP);
         return futureFreeCashFlow6;
     }
 
     public BigDecimal getTerminalValue() {
-        terminalValue = futureFreeCashFlow6.multiply(BigDecimal.valueOf(1).add(perpetualGrowthRate))
+        BigDecimal value = futureFreeCashFlow6.multiply(BigDecimal.valueOf(1).add(perpetualGrowthRate))
                 .divide((discountRate.subtract(perpetualGrowthRate)), 2, RoundingMode.HALF_UP);
+        terminalValue = value.setScale(2, RoundingMode.HALF_UP);
         return terminalValue;
     }
 
     public BigDecimal getPvOfFreeCashFlow0() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(1);
-        pvOfFreeCashFlow0 = futureFreeCashFlow0.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow0.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow0 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow0;
     }
 
     public BigDecimal getPvOfFreeCashFlow1() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(2);
-        pvOfFreeCashFlow1 = futureFreeCashFlow1.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow1.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow1 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow1;
     }
 
     public BigDecimal getPvOfFreeCashFlow2() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(3);
-        pvOfFreeCashFlow2 = futureFreeCashFlow2.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow2.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow2 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow2;
     }
 
     public BigDecimal getPvOfFreeCashFlow3() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(4);
-        pvOfFreeCashFlow3 = futureFreeCashFlow3.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow3.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow3 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow3;
     }
 
     public BigDecimal getPvOfFreeCashFlow4() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(5);
-        pvOfFreeCashFlow4 = futureFreeCashFlow4.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow4.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow4 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow4;
     }
 
     public BigDecimal getPvOfFreeCashFlow5() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(6);
-        pvOfFreeCashFlow5 = futureFreeCashFlow5.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow5.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow5 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow5;
     }
 
     public BigDecimal getPvOfFreeCashFlow6() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(7);
-        pvOfFreeCashFlow6 = futureFreeCashFlow6.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = futureFreeCashFlow6.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow6 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow6;
     }
     public BigDecimal getPvOfFreeCashFlow7() {
         BigDecimal denominator = BigDecimal.valueOf(1).add(discountRate);
         BigDecimal denominatorPowered = denominator.pow(8);
-        pvOfFreeCashFlow7 = terminalValue.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        BigDecimal value = terminalValue.divide(denominatorPowered, 2, RoundingMode.HALF_UP);
+        pvOfFreeCashFlow7 = value.setScale(2, RoundingMode.HALF_UP);
         return pvOfFreeCashFlow7;
     }
 
@@ -235,8 +256,6 @@ public class WatchlistAddCalcRequest {
     public BigDecimal getSumPvOfFcf() {
         BigDecimal[] growthValues = {pvOfFreeCashFlow1, pvOfFreeCashFlow2, pvOfFreeCashFlow3, pvOfFreeCashFlow4,
                 pvOfFreeCashFlow5, pvOfFreeCashFlow6, pvOfFreeCashFlow7};
-
-        int count = growthValues.length;
 
         BigDecimal sum = BigDecimal.ZERO;
 
@@ -250,17 +269,20 @@ public class WatchlistAddCalcRequest {
     }
 
     public BigDecimal getEquityValue() {
-        equityValue = sumPvOfFcf.add(cash).subtract(totalDebt);
+        BigDecimal value = sumPvOfFcf.add(cash).subtract(totalDebt);
+        equityValue = value.setScale(2, RoundingMode.HALF_UP);
         return equityValue;
     }
 
     public BigDecimal getDcfWithoutMarginOfSafety() {
-        dcfWithoutMarginOfSafety = equityValue.divide(sharesOutstanding, 2, RoundingMode.HALF_UP);
+        BigDecimal value = equityValue.divide(sharesOutstanding, 2, RoundingMode.HALF_UP);
+        dcfWithoutMarginOfSafety = value.setScale(2, RoundingMode.HALF_UP);
         return dcfWithoutMarginOfSafety;
     }
 
     public BigDecimal getDcfWithMarginOfSafety() {
-        dcfWithMarginOfSafety = dcfWithoutMarginOfSafety.multiply(BigDecimal.valueOf(0.8));
+        BigDecimal value = dcfWithoutMarginOfSafety.multiply(BigDecimal.valueOf(0.8));
+        dcfWithMarginOfSafety = value.setScale(2, RoundingMode.HALF_UP);
         return dcfWithMarginOfSafety;
     }
 
