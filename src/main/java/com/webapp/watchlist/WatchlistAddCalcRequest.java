@@ -76,6 +76,18 @@ public class WatchlistAddCalcRequest {
     private BigDecimal dcfWithMarginOfSafety;
 
 
+    public BigDecimal getDividendY() {
+        BigDecimal value = dividendQ.multiply(BigDecimal.valueOf(4));
+        dividendY = value.setScale(3, RoundingMode.HALF_UP);
+        return dividendY;
+    }
+
+    public BigDecimal getDividendYield() {
+        BigDecimal value = (dividendY.divide(price, 2, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100));
+        dividendYield = value.setScale(2, RoundingMode.HALF_UP);
+        return dividendYield;
+    }
+
 
     public BigDecimal getGrowth0() {
         growth0 = (freeCashFlow0.subtract(freeCashFlow1)).divide(freeCashFlow1, 2, RoundingMode.HALF_UP);
@@ -115,7 +127,7 @@ public class WatchlistAddCalcRequest {
         }
 
         if (count != 0) {
-            avgGrowthRate = sum.divide(BigDecimal.valueOf(count), 2, BigDecimal.ROUND_HALF_UP);
+            avgGrowthRate = sum.divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP);
         } else {
             avgGrowthRate = BigDecimal.ZERO;
         }
@@ -250,23 +262,6 @@ public class WatchlistAddCalcRequest {
     public BigDecimal getDcfWithMarginOfSafety() {
         dcfWithMarginOfSafety = dcfWithoutMarginOfSafety.multiply(BigDecimal.valueOf(0.8));
         return dcfWithMarginOfSafety;
-    }
-
-
-
-
-
-
-    public BigDecimal getDividendY() {
-        BigDecimal value = dividendQ.multiply(BigDecimal.valueOf(4));
-        dividendY = value.setScale(3, RoundingMode.HALF_UP);
-        return dividendY;
-    }
-
-    public BigDecimal getDividendYield() {
-        BigDecimal value = (dividendY.divide(price, 2, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100));
-        dividendYield = value.setScale(2, RoundingMode.HALF_UP);
-        return dividendYield;
     }
 
 
