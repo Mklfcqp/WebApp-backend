@@ -1,7 +1,6 @@
 package com.webapp.watchlist;
 
 import com.webapp.user.User;
-import com.webapp.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +16,7 @@ public class WatchlistService {
     private final WatchlistRepository watchlistRepository;
     private final WatchlistMapper watchlistMapper;
 
-    public void addCompanyToWatchlist(WatchlistAddRequest request) {
+    public void addCompanyToWatchlist(WatchlistAddManualRequest request) {
 
         User currentUser = getCurrentUser();
         if (currentUser == null) {
@@ -43,7 +42,7 @@ public class WatchlistService {
     }
 
     //---------------updateWatchlistData()---------------
-    public void updateWatchlist(WatchlistAddRequest request) {
+    public void updateWatchlist(WatchlistAddManualRequest request) {
         User currentUser = getCurrentUser();
         if (currentUser == null) {
             throw new IllegalStateException("User not authenticated");

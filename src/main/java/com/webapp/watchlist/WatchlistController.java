@@ -1,11 +1,6 @@
 package com.webapp.watchlist;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +16,7 @@ public class WatchlistController {
     private final WatchlistService watchlistService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addCompanyToWatchlist(@RequestBody WatchlistAddRequest request) {
+    public ResponseEntity<String> addCompanyToWatchlist(@RequestBody WatchlistAddManualRequest request) {
         try {
 
             watchlistService.addCompanyToWatchlist(request);
@@ -42,7 +37,7 @@ public class WatchlistController {
     //---------------updateWatchlistData()---------------
 
     @PutMapping("/update")
-    public ResponseEntity<String> updateWatchlist(@RequestBody WatchlistAddRequest request){
+    public ResponseEntity<String> updateWatchlist(@RequestBody WatchlistAddManualRequest request){
         try {
 
             watchlistService.updateWatchlist(request);

@@ -1,12 +1,8 @@
 package com.webapp.dcf;
 
-import com.webapp.watchlist.WatchlistAddRequest;
-import com.webapp.watchlist.WatchlistGetRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/dcf")
