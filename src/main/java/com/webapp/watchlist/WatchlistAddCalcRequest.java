@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Data
 @Builder
@@ -38,8 +39,6 @@ public class WatchlistAddCalcRequest {
     private BigDecimal growth2;
     private BigDecimal growth3;
     private BigDecimal growth4;
-    private BigDecimal growth5;
-    private BigDecimal growth6;
 
     private BigDecimal growthRate;
     private BigDecimal avgGrowthRate;
@@ -103,19 +102,9 @@ public class WatchlistAddCalcRequest {
         return growth4;
     }
 
-    public BigDecimal getGrowth5() {
-        growth5 = (freeCashFlow5.subtract(freeCashFlow6)).divide(freeCashFlow6, 2, RoundingMode.HALF_UP);
-        return growth5;
-    }
-
-    public BigDecimal getGrowth6() {
-        growth6 = (freeCashFlow6.subtract(freeCashFlow7)).divide(freeCashFlow7, 2, RoundingMode.HALF_UP);
-        return growth6;
-    }
-
 
     public BigDecimal getAvgGrowthRate() {
-        BigDecimal[] growthValues = {growth0, growth1, growth2, growth3, growth4, growth5, growth6};
+        BigDecimal[] growthValues = {growth0, growth1, growth2, growth3, growth4};
 
         int count = growthValues.length;
 

@@ -26,6 +26,8 @@ public class WatchlistGetRequest {
     private BigDecimal dividendYield;
     private String overValuedUnderValued;
 
+    private BigDecimal dcfWithMarginOfSafety;
+
 }
 
 

@@ -1,6 +1,5 @@
 package com.webapp.watchlist;
 
-import com.webapp.dcf.Dcf;
 import com.webapp.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -49,8 +48,6 @@ public class Watchlist {
     private BigDecimal growth2;
     private BigDecimal growth3;
     private BigDecimal growth4;
-    private BigDecimal growth5;
-    private BigDecimal growth6;
 
     private BigDecimal growthRate;
     private BigDecimal avgGrowthRate;
