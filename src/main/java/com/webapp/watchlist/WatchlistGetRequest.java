@@ -28,6 +28,20 @@ public class WatchlistGetRequest {
 
     private BigDecimal dcfWithMarginOfSafety;
 
+    private BigDecimal freeCashFlow0;
+    private BigDecimal freeCashFlow1;
+    private BigDecimal freeCashFlow2;
+    private BigDecimal freeCashFlow3;
+    private BigDecimal freeCashFlow4;
+    private BigDecimal freeCashFlow5;
+
+    private BigDecimal growthRate;
+    private BigDecimal perpetualGrowthRate;
+    private BigDecimal discountRate;
+    private BigDecimal cash;
+    private BigDecimal totalDebt;
+    private BigDecimal sharesOutstanding;
+
 }
 
 

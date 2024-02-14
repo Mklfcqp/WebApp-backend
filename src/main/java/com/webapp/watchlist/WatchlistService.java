@@ -79,6 +79,8 @@ public class WatchlistService {
             throw new IllegalStateException("User not authenticated");
         }
 
+        request.calculateDCF();
+
         Watchlist watchlist = watchlistMapper.WatchlistAddCalcRequestToWatchlist(request, currentUser);
         watchlistRepository.save(watchlist);
     }

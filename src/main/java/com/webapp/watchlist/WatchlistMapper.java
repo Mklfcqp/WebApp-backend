@@ -22,6 +22,18 @@ public class WatchlistMapper {
                 .currencyDividendQ(watchlist.getCurrencyDividendQ())
                 .dividendYield(watchlist.getDividendYield())
                 .overValuedUnderValued(watchlist.getOverValuedUnderValued())
+                .freeCashFlow0(watchlist.getFreeCashFlow0())
+                .freeCashFlow1(watchlist.getFreeCashFlow1())
+                .freeCashFlow2(watchlist.getFreeCashFlow2())
+                .freeCashFlow3(watchlist.getFreeCashFlow3())
+                .freeCashFlow4(watchlist.getFreeCashFlow4())
+                .freeCashFlow5(watchlist.getFreeCashFlow5())
+                .growthRate(watchlist.getGrowthRate())
+                .discountRate(watchlist.getDiscountRate())
+                .perpetualGrowthRate(watchlist.getPerpetualGrowthRate())
+                .totalDebt(watchlist.getTotalDebt())
+                .sharesOutstanding(watchlist.getSharesOutstanding())
+                .cash(watchlist.getCash())
                 .build();
     }
 
