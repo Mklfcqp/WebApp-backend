@@ -83,7 +83,7 @@ public class WatchlistAddCalcRequest {
 
     public BigDecimal getDividendYield() {
         BigDecimal value = (dividendY.divide(price, 3, RoundingMode.HALF_UP)).multiply(BigDecimal.valueOf(100));
-        dividendYield = value.setScale(3, RoundingMode.HALF_UP);
+        dividendYield = value.setScale(2, RoundingMode.HALF_UP);
         return dividendYield;
     }
 
