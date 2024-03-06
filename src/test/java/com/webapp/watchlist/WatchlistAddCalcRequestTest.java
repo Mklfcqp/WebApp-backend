@@ -374,50 +374,207 @@ class WatchlistAddCalcRequestTest {
 
     @Test
     void getPvOfFreeCashFlow0() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow0(BigDecimal.valueOf(115));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow0();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(104.545).setScale(3), result);
     }
 
     @Test
     void getPvOfFreeCashFlow1() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow1(BigDecimal.valueOf(-132.250));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow1();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(-109.298).setScale(3), result);
     }
 
     @Test
     void getPvOfFreeCashFlow2() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow2(BigDecimal.valueOf(-103.500));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow2();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(-77.761).setScale(3), result);
     }
 
+    // if(futureFreeCashFlow3 = BigDecimal.ZERO) {getPvOfFreeCashFlow3 = BigDecimal.ZERO} - pro vsechny PvOfFreeCashFlow
     @Test
     void getPvOfFreeCashFlow3() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow3(BigDecimal.valueOf(0));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow3();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(0.000).setScale(3), result);
     }
 
     @Test
     void getPvOfFreeCashFlow4() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow4(BigDecimal.valueOf(100));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(0));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow4();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(0.000).setScale(3), result);
     }
 
     @Test
     void getPvOfFreeCashFlow5() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow5(BigDecimal.valueOf(98));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow5();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(55.318).setScale(3), result);
     }
 
     @Test
     void getPvOfFreeCashFlow6() {
+        // Given
+        watchlistAddCalcRequest.setFutureFreeCashFlow6(BigDecimal.valueOf(200));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow6();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(102.632).setScale(3), result);
     }
 
     @Test
     void getPvOfFreeCashFlow7() {
+        // Given
+        watchlistAddCalcRequest.setTerminalValue(BigDecimal.valueOf(150));
+        watchlistAddCalcRequest.setDiscountRate(BigDecimal.valueOf(10));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getPvOfFreeCashFlow7();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(69.976).setScale(3), result);
     }
 
     @Test
     void getSumPvOfFcf() {
+        // Given
+        watchlistAddCalcRequest.setPvOfFreeCashFlow0(BigDecimal.valueOf(5));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow1(BigDecimal.valueOf(-3.2));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow2(BigDecimal.valueOf(2));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow3(BigDecimal.valueOf(1.8));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow4(BigDecimal.valueOf(1.23));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow5(BigDecimal.valueOf(2.338));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow6(BigDecimal.valueOf(-2.01));
+        watchlistAddCalcRequest.setPvOfFreeCashFlow7(BigDecimal.valueOf(0));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getSumPvOfFcf();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(7.158).setScale(3), result);
     }
 
     @Test
     void getEquityValue() {
+        // Given
+        watchlistAddCalcRequest.setSumPvOfFcf(BigDecimal.valueOf(8));
+        watchlistAddCalcRequest.setCash(BigDecimal.valueOf(100));
+        watchlistAddCalcRequest.setTotalDebt(BigDecimal.valueOf(150));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getEquityValue();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(-42.000).setScale(3), result);
+    }
+
+    @Test
+    void getEquityValueCash0() {
+        // Given
+        watchlistAddCalcRequest.setSumPvOfFcf(BigDecimal.valueOf(8));
+        watchlistAddCalcRequest.setCash(BigDecimal.valueOf(0));
+        watchlistAddCalcRequest.setTotalDebt(BigDecimal.valueOf(150));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getEquityValue();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(-142.000).setScale(3), result);
+    }
+
+    @Test
+    void getEquityValueTotalDebt0() {
+        // Given
+        watchlistAddCalcRequest.setSumPvOfFcf(BigDecimal.valueOf(8));
+        watchlistAddCalcRequest.setCash(BigDecimal.valueOf(100));
+        watchlistAddCalcRequest.setTotalDebt(BigDecimal.valueOf(0));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getEquityValue();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(108.000).setScale(3), result);
     }
 
     @Test
     void getDcfWithoutMarginOfSafety() {
+        // Given
+        watchlistAddCalcRequest.setEquityValue(BigDecimal.valueOf(323));
+        watchlistAddCalcRequest.setSharesOutstanding(BigDecimal.valueOf(12.5));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getDcfWithoutMarginOfSafety();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(25.84).setScale(2), result);
+    }
+
+    // if (getEquityValue = BigDecimal.ZERO) { dcfWithoutMarginOfSafety = BigDecimal.ZERO }
+    @Test
+    void getDcfWithoutMarginOfSafetyEquityValue0() {
+        // Given
+        watchlistAddCalcRequest.setEquityValue(BigDecimal.valueOf(0));
+        watchlistAddCalcRequest.setSharesOutstanding(BigDecimal.valueOf(12.5));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getDcfWithoutMarginOfSafety();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(0).setScale(2), result);
     }
 
     @Test
     void getDcfWithMarginOfSafety() {
+        // Given
+        watchlistAddCalcRequest.setDcfWithoutMarginOfSafety(BigDecimal.valueOf(120.3));
+
+        // When
+        BigDecimal result = watchlistAddCalcRequest.getDcfWithMarginOfSafety();
+
+        // Then
+        assertEquals(BigDecimal.valueOf(96.24).setScale(2), result);
     }
 
     @Test
