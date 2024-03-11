@@ -1,8 +1,11 @@
 package com.webapp.watchlist;
 
+import com.webapp.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +18,7 @@ class WatchlistServiceTest {
     @Test
     public void addWatchlistDataManualTest() {
         WatchlistAddManualRequest request = new WatchlistAddManualRequest();
-        request.setName("Apple Inc.");
+        request.setCompany("Apple Inc.");
         request.setTicker("AAPL");
         request.setPrice(152.51);
         request.setNumShares(100);
