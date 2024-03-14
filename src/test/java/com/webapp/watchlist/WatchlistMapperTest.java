@@ -10,12 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WatchlistMapperTest {
 
-    private WatchlistMapper watchlistMapper;
-
-    @Before("")
-    public void setUp() {
-        watchlistMapper = new WatchlistMapper();
-    }
+    private final WatchlistMapper watchlistMapper = new WatchlistMapper();
 
     @Test
     void toWatchlistGetRequest() {
